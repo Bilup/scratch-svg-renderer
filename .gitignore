@@ -6,7 +6,7 @@
 npm-*
 
 # Build
-dist/*
+# dist/*
 /playground
 
 # Editors
