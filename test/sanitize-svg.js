@@ -38,7 +38,9 @@ test('compare svg content before and after sanitize-svg sanitizes it', t => {
         const correctSvgFilePath = path.resolve(__dirname, `./fixtures/${correctSvgFilename}`);
         const correctSvgString = fs.readFileSync(correctSvgFilePath).toString();
 
-        t.equals(testSanitizedSvgString, correctSvgString);
+        // normalize newlines for cross-platform compatibility
+        const normalizeNewlines = str => str.replace(/\r\n/g, '\n');
+        t.equals(normalizeNewlines(testSanitizedSvgString), normalizeNewlines(correctSvgString));
     });
     t.end();
 });
