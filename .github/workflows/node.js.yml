@@ -14,15 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout develop
-      uses: actions/checkout@v4
-
-    - name: Use Node.js
-      uses: actions/setup-node@v4
+    - uses: actions/checkout@v6
       with:
-        node-version: 22
+        persist-credentials: false
+    - name: Install Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version: 24
         cache: 'npm'
-
     - run: npm ci
     - run: npm run build
     - run: npm test
